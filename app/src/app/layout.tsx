@@ -1,6 +1,9 @@
 import "./globals.css";
 import { Open_Sans, Montserrat } from "next/font/google";
 import { Metadata } from "next";
+import PrivyProvider from "@/providers/PrivyProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
+import AppProvider from "@/providers/AppProvider";
 
 const open_sans = Open_Sans({
     subsets: ["latin"],
@@ -29,7 +32,18 @@ export default function RootLayout({
             lang="en"
             className={`${monsterrat.variable} ${open_sans.variable}`}
         >
-            <body>{children}</body>
+            <body>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <PrivyProvider>
+                        <AppProvider>{children}</AppProvider>
+                    </PrivyProvider>
+                </ThemeProvider>
+            </body>
         </html>
     );
 }
