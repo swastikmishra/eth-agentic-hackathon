@@ -45,8 +45,10 @@ export default function AppProvider({
                 {!showSplash && (
                     <>
                         {!authenticated && <Login login={loginUser} />}
-                        {!user.authorized && <ProfileSkeleton />}
-                        {user.authorized && children}
+                        {authenticated && !user.authorized && (
+                            <ProfileSkeleton />
+                        )}
+                        {authenticated && user.authorized && children}
                     </>
                 )}
             </main>

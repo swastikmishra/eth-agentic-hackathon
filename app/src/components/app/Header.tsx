@@ -11,10 +11,18 @@ import {
 import { usePrivy } from "@privy-io/react-auth";
 import Link from "next/link";
 import Logo from "./Logo";
+import { useUser } from "@/stores/user";
 
 export default function Header() {
     const { setTheme } = useTheme();
     const { logout, authenticated } = usePrivy();
+    const user = useUser();
+
+    const logoutUser = () => {
+        logout().then(() => {
+            user.logout();
+        });
+    };
 
     return (
         <div className="fixed w-full left-0 right-0 top-0 z-50 shadow-lg SplashScreen">
@@ -26,7 +34,7 @@ export default function Header() {
                     {authenticated && (
                         <Button
                             variant="outline"
-                            onClick={logout}
+                            onClick={logoutUser}
                             className="mr-2 text-white bg-transparent border-transparent shadow-none"
                         >
                             <LogOut />
