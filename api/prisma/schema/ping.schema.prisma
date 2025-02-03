@@ -1,0 +1,4 @@
+model Ping {
+    id           Int      @id @default(autoincrement())
+    lastPingedAt DateTime @default(now())
+}

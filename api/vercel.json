@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/api/serverless.js"
+        }
+    ],
+    "functions": {
+        "api/serverless.js": {
+            "maxDuration": 300
+        },
+        "api/*": {
+            "maxDuration": 300
+        }
+    }
+}

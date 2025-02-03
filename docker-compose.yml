@@ -1,0 +1,20 @@
+services:
+  app:
+    build: .
+    env_file:
+      - ./.env
+    tty: true
+    volumes:
+      - ./app:/app
+    ports:
+      - 3000:3000
+
+  api:
+    build: .
+    env_file:
+      - ./.env
+    tty: true
+    volumes:
+      - ./api:/app
+    ports:
+      - 3300:3000
