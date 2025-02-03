@@ -14,8 +14,9 @@
         "zod": "^3.23.8"
     },
     "scripts": {
-        "postinstall": "prisma generate",
-        "dev": "npm run dev"
+        "dev": "nodemon api/server.ts",
+        "build": "tsc",
+        "postinstall": "prisma generate"
     },
     "devDependencies": {
         "@types/node": "^22.13.0"
