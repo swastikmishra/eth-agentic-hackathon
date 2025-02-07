@@ -6,8 +6,8 @@ export default function Home() {
     return (
         <div className="flex flex-col">
             <CryptoCard
-                userName={user.welcomeName as string}
-                walletAddress={user.privy?.wallet?.address as string}
+                userName={user.data.welcomeName as string}
+                wallets={user.wallets}
             />
         </div>
     );
@@ -15,16 +15,24 @@ export default function Home() {
 
 const CryptoCard = ({
     userName,
-    walletAddress,
+    wallets,
 }: {
     userName: string;
-    walletAddress: string;
+    wallets: any;
 }) => {
     return (
         <div className="flex flex-col justify-between items-start gap-2">
-            {/* Header with user name and wallet address */}
             <h2 className="font-semibold">Hey {userName}</h2>
-            <p className="break-words">Wallet: {walletAddress}</p>
+            {wallets.map((wallet: any) => (
+                <div
+                    key={wallet.address}
+                    className="flex flex-col gap-2 text-sm"
+                >
+                    <p>
+                        {wallet.type} : {wallet.address}
+                    </p>
+                </div>
+            ))}
         </div>
     );
 };

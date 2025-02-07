@@ -2,10 +2,13 @@ import fastify from "fastify";
 import fastifyJwt from "@fastify/jwt";
 import cors from "@fastify/cors";
 
+import { verifyAuthToken } from "./middleware/auth";
 import {
     publicRoutes as healthPublicRoutes,
     protectedRoutes as healthProtectedRoutes,
 } from "./routes/health";
+
+import { protectedRoutes as userProtectedRoutes } from "./routes/user";
 
 const app = fastify({ logger: true });
 
@@ -17,15 +20,11 @@ app.register(cors, {
 });
 
 app.register((instance, opts, next) => {
-    instance.addHook("onRequest", async (request, reply) => {
-        try {
-            await request.jwtVerify();
-        } catch (err) {
-            reply.send(err);
-        }
-    });
+    instance.addHook("onRequest", verifyAuthToken);
+
     // all the routes go here
     instance.register(healthProtectedRoutes, { prefix: "/api/v1/health" });
+    instance.register(userProtectedRoutes, { prefix: "/api/v1/user" });
     next();
 });
 

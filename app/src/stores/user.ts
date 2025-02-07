@@ -6,40 +6,30 @@ import { callAPI } from "@/utils/api";
 const state = proxy({
     privy: {} as User | null,
     authorized: false as boolean,
-    user: {} as any,
+    data: {} as any,
     welcomeName: null as string | null,
     privyAccessToken: null as string | null,
     isOnboarded: false,
     isLoggingIn: false,
+    wallets: [],
 
     reset: () => {
         state.privy = null;
         state.authorized = false;
-        state.user = null as {} | null;
+        state.data = null as {} | null;
         state.welcomeName = null;
         state.privyAccessToken = null;
         state.isOnboarded = false;
         state.isLoggingIn = false;
+        state.wallets = [];
     },
 
-    login: async ({
-        user,
-        isNewUser,
-        wasAlreadyAuthenticated,
-        loginMethod,
-        loginAccount,
-    }: {
-        user: User;
-        isNewUser: boolean;
-        wasAlreadyAuthenticated: boolean;
-        loginMethod: any | null;
-        loginAccount: LinkedAccountWithMetadata | null;
-    }) => {
+    login: async ({ user }: { user: User }) => {
         state.isLoggingIn = true;
         state.privy = user;
         state.privyAccessToken = await getAccessToken();
-        await state.authorizeUser();
         state.setWelcomeName();
+        await state.authorizeUser();
         state.isLoggingIn = false;
         return true;
     },
@@ -80,9 +70,16 @@ const state = proxy({
     authorizeUser: async () => {
         //update wallet address in backend, and then request for drip if not done, and then set authorized to true
         try {
-            // let res = await callAPI("/signin");
-            console.log("call backend API");
-            await new Promise((resolve) => setTimeout(resolve, 2500));
+            let response = await callAPI("/user/authenticate", "POST", {
+                welcomeName: state.welcomeName,
+            });
+
+            if (response.status != true || !response.response.user) {
+                throw new Error("Failed to authenticate user");
+            }
+
+            state.data = response.response.user;
+            state.wallets = response.response.user.Wallets;
             state.authorized = true;
             state.isLoggingIn = false;
         } catch (err) {

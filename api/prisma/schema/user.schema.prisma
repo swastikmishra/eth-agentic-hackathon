@@ -1,0 +1,27 @@
+enum WalletType {
+    USER
+    AGENT
+}
+
+model User {
+    id          Int       @id @default(autoincrement())
+    cuid        String    @unique @default(cuid())
+    privyId     String    @unique
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    welcomeName String?
+    Wallets     Wallets[]
+}
+
+model Wallets {
+    id        Int        @id @default(autoincrement())
+    cuid      String     @unique @default(cuid())
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
+    type      WalletType @default(USER)
+    walletId  String
+    address   String
+    chainType String
+    userId    Int
+    user      User       @relation(fields: [userId], references: [id])
+}

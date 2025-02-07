@@ -5,7 +5,7 @@ export const callAPI = async (
     method: string = "GET",
     data: object | null = null
 ) => {
-    const API_URL = process.env.NEXT_PUBLIC_API_ENDPOINT;
+    const API_URL = process.env.NEXT_PUBLIC_API_ENDPOINT + "/api/v1";
     try {
         let res = await fetch(`${API_URL}${endpoint}`, {
             method: method,

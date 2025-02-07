@@ -8,9 +8,6 @@ export default function Provider({ children }: { children: React.ReactNode }) {
         <PrivyProvider
             appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID as string}
             config={{
-                embeddedWallets: {
-                    createOnLogin: "users-without-wallets",
-                },
                 defaultChain: baseSepolia,
             }}
         >

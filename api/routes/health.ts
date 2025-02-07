@@ -9,6 +9,7 @@ const protectedRoutes: FastifyPluginCallback = (instance, options, done) => {
             response: {
                 message: "This is a protected route.",
                 timestamp: new Date().toISOString(),
+                user: request.user,
             },
         });
     });

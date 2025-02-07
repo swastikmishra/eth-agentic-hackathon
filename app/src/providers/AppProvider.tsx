@@ -16,12 +16,7 @@ export default function AppProvider({
 }) {
     const [showSplash, setShowSplash] = useState(true);
     const user = useUser();
-    const { ready, authenticated, login } = usePrivy();
-    useLogin({
-        onComplete: (props) => {
-            user.login({ ...props });
-        },
-    });
+    const { ready, authenticated, login, user: PrivyUser } = usePrivy();
 
     const loginUser = () => {
         login({
@@ -36,6 +31,16 @@ export default function AppProvider({
             }, 1000);
         }
     }, [ready]);
+
+    useEffect(() => {
+        if (PrivyUser && !user.authorized) {
+            if (!user.isLoggingIn) {
+                user.login({
+                    user: PrivyUser,
+                });
+            }
+        }
+    }, [PrivyUser, user]);
 
     return (
         <>
