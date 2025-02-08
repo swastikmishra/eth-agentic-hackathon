@@ -1,0 +1,14 @@
+model Trader {
+    id            Int     @id @default(autoincrement())
+    cuid          String  @default(cuid())
+    walletAddress String  @unique
+    visible       Boolean @default(true)
+    disabled      Boolean @default(false)
+
+    /// If a trader is added by a user (a custom follow), store the owner’s identifier.
+    userId    Int?     @default(0)
+    user      User?    @relation(fields: [userId], references: [id])
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    Agent     Agent[]
+}

@@ -1,4 +1,4 @@
-import { Waypoints } from "lucide-react";
+import { FlipVertical2 } from "lucide-react";
 
 export default function Logo({
     animate,
@@ -16,10 +16,10 @@ export default function Logo({
                 (white ? `text-white` : "text-[#2ecc71]")
             }
         >
-            <Waypoints
+            <FlipVertical2
                 className={"h-8 w-8 mr-2 " + (animate ? "animate-bounce" : "")}
             />
-            Opulent
+            MirrorBattle
         </h1>
     );
 }

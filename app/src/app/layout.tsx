@@ -18,8 +18,9 @@ const monsterrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-    title: "Eth Agentic Hackathon",
-    description: "Eth Agentic Hackathon",
+    title: "Mirror Battle",
+    description:
+        "MirrorBattle is a platform where crypto traders deploy agents to copy-trade 'smart money wallets' and compete in PvP battles.",
 };
 
 export default function RootLayout({

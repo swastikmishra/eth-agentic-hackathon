@@ -1,0 +1,49 @@
+enum WalletType {
+    USER
+    AGENT
+}
+
+enum WalletTxnCategory {
+    DEPOSIT
+    WITHDRAWL
+    INTERNAL_TRANSFER
+}
+
+model Wallet {
+    id             Int              @id @default(autoincrement())
+    cuid           String           @unique @default(cuid())
+    createdAt      DateTime         @default(now())
+    updatedAt      DateTime         @updatedAt
+    type           WalletType       @default(USER)
+    walletId       String
+    address        String
+    chainType      String
+    userId         Int
+    user           User             @relation(fields: [userId], references: [id])
+    agentId        Int
+    agent          Agent            @relation(fields: [agentId], references: [id])
+    WalletTxn      WalletTxn[]
+    WalletSnapshot WalletSnapshot[]
+}
+
+model WalletTxn {
+    id        String            @id @default(uuid())
+    walletId  Int
+    wallet    Wallet            @relation(fields: [walletId], references: [id])
+    txnOwner  WalletType
+    category  WalletTxnCategory
+    contract  String
+    amount    Int
+    decimals  Int
+    txnHash   String? // optional transaction hash if applicable
+    createdAt DateTime          @default(now())
+}
+
+model WalletSnapshot {
+    id        String   @id @default(uuid())
+    walletId  Int
+    wallet    Wallet   @relation(fields: [walletId], references: [id])
+    usdValue  Int // snapshot value in USD (taken every hour)
+    timestamp DateTime @default(now())
+    date      DateTime
+}

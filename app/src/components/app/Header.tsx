@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { LogOut, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -24,6 +24,10 @@ export default function Header() {
         });
     };
 
+    useEffect(() => {
+        setTheme("light");
+    });
+
     return (
         <div className="fixed w-full left-0 right-0 top-0 z-50 shadow-lg SplashScreen">
             <header className="md:container md:mx-auto px-4 flex justify-between items-center py-4">
@@ -41,7 +45,7 @@ export default function Header() {
                             Logout
                         </Button>
                     )}
-                    <DropdownMenu>
+                    {/* <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button
                                 variant="link"
@@ -66,7 +70,7 @@ export default function Header() {
                                 System
                             </DropdownMenuItem>
                         </DropdownMenuContent>
-                    </DropdownMenu>
+                    </DropdownMenu> */}
                 </div>
             </header>
         </div>

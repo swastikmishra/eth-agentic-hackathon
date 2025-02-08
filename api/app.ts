@@ -9,6 +9,7 @@ import {
 } from "./routes/health";
 
 import { protectedRoutes as userProtectedRoutes } from "./routes/user";
+import prisma from "./prisma/prisma";
 
 const app = fastify({ logger: true });
 
@@ -33,5 +34,21 @@ app.register((instance, opts, next) => {
     instance.register(healthPublicRoutes, { prefix: "/api/v1/health" });
     next();
 });
+
+async function start() {
+    await prisma.user.upsert({
+        where: {
+            id: 0,
+        },
+        update: {},
+        create: {
+            id: 0,
+            cuid: "c1u9hfw8r00000000000000000",
+            privyId: "0000000000000",
+            welcomeName: "AppOwner",
+        },
+    });
+}
+start();
 
 export default app;
