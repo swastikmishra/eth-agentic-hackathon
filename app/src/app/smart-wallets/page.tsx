@@ -127,7 +127,7 @@ export default function SmartWallets() {
     );
 }
 
-export const TraderSkeleton = () => (
+const TraderSkeleton = () => (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[1, 2, 3, 4].map((index) => (
             <div

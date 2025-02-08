@@ -91,6 +91,10 @@ html.dark body {
     background: #15161a;
 }
 
+html.light body {
+    background: hsl(0deg 0% 88.7% / 19%);
+}
+
 div.SplashScreen {
     background: hsl(var(--primary));
     /* background: -webkit-linear-gradient(
