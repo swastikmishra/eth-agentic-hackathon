@@ -12,24 +12,27 @@ import { usePrivy } from "@privy-io/react-auth";
 import Link from "next/link";
 import Logo from "./Logo";
 import { useUser } from "@/stores/user";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
     const { setTheme } = useTheme();
     const { logout, authenticated } = usePrivy();
     const user = useUser();
+    const router = useRouter();
 
     const logoutUser = () => {
         logout().then(() => {
             user.logout();
+            router.push("/");
         });
     };
 
     useEffect(() => {
-        setTheme("light");
+        // setTheme("dark");
     });
 
     return (
-        <div className="fixed w-full left-0 right-0 top-0 z-50 shadow-lg SplashScreen">
+        <div className="fixed w-full left-0 right-0 top-0 z-50 shadow-lg bg-slate-800">
             <header className="md:container md:mx-auto px-4 flex justify-between items-center py-4">
                 <Link href="/">
                     <Logo white />
@@ -45,7 +48,7 @@ export default function Header() {
                             Logout
                         </Button>
                     )}
-                    {/* <DropdownMenu>
+                    <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button
                                 variant="link"
@@ -70,7 +73,7 @@ export default function Header() {
                                 System
                             </DropdownMenuItem>
                         </DropdownMenuContent>
-                    </DropdownMenu> */}
+                    </DropdownMenu>
                 </div>
             </header>
         </div>

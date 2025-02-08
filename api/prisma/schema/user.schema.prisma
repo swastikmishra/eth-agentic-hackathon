@@ -5,6 +5,7 @@ model User {
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
     welcomeName String?
-    Wallets     Wallet[]
+    Wallet      Wallet[]
     Trader      Trader[]
+    Agent       Agent[]
 }

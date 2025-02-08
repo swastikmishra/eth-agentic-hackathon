@@ -9,6 +9,8 @@ import {
 } from "./routes/health";
 
 import { protectedRoutes as userProtectedRoutes } from "./routes/user";
+import { protectedRoutes as traderProtectedRoutes } from "./routes/trader";
+
 import prisma from "./prisma/prisma";
 
 const app = fastify({ logger: true });
@@ -26,6 +28,7 @@ app.register((instance, opts, next) => {
     // all the routes go here
     instance.register(healthProtectedRoutes, { prefix: "/api/v1/health" });
     instance.register(userProtectedRoutes, { prefix: "/api/v1/user" });
+    instance.register(traderProtectedRoutes, { prefix: "/api/v1/trader" });
     next();
 });
 
@@ -43,7 +46,7 @@ async function start() {
         update: {},
         create: {
             id: 0,
-            cuid: "c1u9hfw8r00000000000000000",
+            cuid: "0000000000000",
             privyId: "0000000000000",
             welcomeName: "AppOwner",
         },

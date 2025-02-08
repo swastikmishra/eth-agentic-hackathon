@@ -31,7 +31,7 @@ const verifyAuthToken = async (
             },
             update: {},
             include: {
-                Wallets: true,
+                Wallet: true,
             },
         });
 

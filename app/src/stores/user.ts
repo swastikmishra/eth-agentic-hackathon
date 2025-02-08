@@ -11,7 +11,7 @@ const state = proxy({
     privyAccessToken: null as string | null,
     isOnboarded: false,
     isLoggingIn: false,
-    wallets: [],
+    wallet: [],
 
     reset: () => {
         state.privy = null;
@@ -21,7 +21,7 @@ const state = proxy({
         state.privyAccessToken = null;
         state.isOnboarded = false;
         state.isLoggingIn = false;
-        state.wallets = [];
+        state.wallet = [];
     },
 
     login: async ({ user }: { user: User }) => {
@@ -79,7 +79,7 @@ const state = proxy({
             }
 
             state.data = response.response.user;
-            state.wallets = response.response.user.Wallets;
+            state.wallet = response.response.user.Wallet;
             state.authorized = true;
             state.isLoggingIn = false;
         } catch (err) {

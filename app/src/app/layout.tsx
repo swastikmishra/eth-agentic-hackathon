@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     title: "Mirror Battle",
     description:
         "MirrorBattle is a platform where crypto traders deploy agents to copy-trade 'smart money wallets' and compete in PvP battles.",
+    other: {
+        "apple-mobile-web-app-title": "Mirror Battle",
+    },
 };
 
 export default function RootLayout({
@@ -37,7 +40,6 @@ export default function RootLayout({
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
-                    enableSystem
                     disableTransitionOnChange
                 >
                     <PrivyProvider>

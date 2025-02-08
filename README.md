@@ -12,20 +12,15 @@ App URL: https://eth-agentic-hackathon-app.vercel.app/
 
 ### Status
 
-| Module                     | Services/Components                              | Status       |
-| -------------------------- | ------------------------------------------------ | ------------ |
-| User Authentication        | Privy Authentication                             | ✅ Completed |
-| Wallet Management          | Privy Server Wallet                              | ✅ Completed |
-|                            | Deposit & Funding Service                        | ⌛Pending    |
-|                            | Wallet Snapshot Service                          | ⌛Pending    |
-| PvP Competition Module     | Competition Registration Service                 | ⌛Pending    |
-|                            | Transaction Validation                           | ⌛Pending    |
-|                            | Ranking & Scoring Engine                         | ⌛Pending    |
-| Copy-Trading Configuration | Smart Wallets UI Pop-up                          | ⌛Pending    |
-|                            | Wallet Selection & Trigger Configuration Service | ⌛Pending    |
-| Copy-Trade Execution       | Trade Signal Detection Service                   | ⌛Pending    |
-|                            | Fund Allocation Engine & Trade Execution Service | ⌛Pending    |
-| Risk Management (TBD)      | Profit-Taking & Stop Loss/Liquidation Modules    | ⌛Pending    |
+✅ Completed
+⌛Pending
+
+| Module         | Status       |
+| -------------- | ------------ |
+| Authentication | ✅ Completed |
+| Server Wallets | ⌛Pending    |
+| Traders        | ⌛Pending    |
+| Agents         | ⌛Pending    |
 
 ### Test Users
 
@@ -33,3 +28,5 @@ App URL: https://eth-agentic-hackathon-app.vercel.app/
 | ------------------ | --------------- | -------- |
 | test-3250@privy.io | +1 555 555 0073 | 076747   |
 | test-3538@privy.io | +1 555 555 2583 | 798083   |
+
+Test Smart Wallet: 0xE1054F7b83dDa65401ef9f213350486168952F0c

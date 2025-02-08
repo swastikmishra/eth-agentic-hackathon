@@ -2,12 +2,14 @@
 
 import Header from "@/components/app/Header";
 import Logo from "@/components/app/Logo";
+import Navbar from "@/components/app/Navbar";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useUser } from "@/stores/user";
-import { useLogin, usePrivy } from "@privy-io/react-auth";
+import { usePrivy } from "@privy-io/react-auth";
 import { LogIn } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function AppProvider({
     children,
@@ -26,9 +28,7 @@ export default function AppProvider({
 
     useEffect(() => {
         if (ready) {
-            setTimeout(() => {
-                setShowSplash(false);
-            }, 1000);
+            setShowSplash(false);
         }
     }, [ready]);
 
@@ -44,16 +44,22 @@ export default function AppProvider({
 
     return (
         <>
+            <Toaster />
             <SplashScreen visible={showSplash} />
             <Header />
-            <main className="md:container md:mx-auto px-4 pt-[90px] h-screen">
+            <main className="md:container md:mx-auto px-4 pt-[90px] min-h-screen pb-12">
                 {!showSplash && (
                     <>
                         {!authenticated && <Login login={loginUser} />}
                         {authenticated && !user.authorized && (
                             <ProfileSkeleton />
                         )}
-                        {authenticated && user.authorized && children}
+                        {authenticated && user.authorized && (
+                            <>
+                                <Navbar />
+                                {children}
+                            </>
+                        )}
                     </>
                 )}
             </main>
@@ -85,8 +91,8 @@ const SplashScreen = ({ visible }: { visible: boolean }) => (
 );
 
 const ProfileSkeleton = () => (
-    <div className="flex flex-col space-y-3 items-center justify-center">
-        <p className="text-primary opacity-50">Loading your profile</p>
+    <div className="flex flex-col space-y-3 h-screen items-center justify-center">
+        <p className="text-primary opacity-50">Loading App</p>
         <Skeleton className="h-[125px] w-[250px] rounded-xl" />
         <div className="space-y-2">
             <Skeleton className="h-4 w-[250px]" />

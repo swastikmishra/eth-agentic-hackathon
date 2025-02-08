@@ -15,13 +15,13 @@ model Wallet {
     createdAt      DateTime         @default(now())
     updatedAt      DateTime         @updatedAt
     type           WalletType       @default(USER)
-    walletId       String
+    walletId       String           @unique
     address        String
     chainType      String
-    userId         Int
-    user           User             @relation(fields: [userId], references: [id])
-    agentId        Int
-    agent          Agent            @relation(fields: [agentId], references: [id])
+    userId         Int?
+    User           User?            @relation(fields: [userId], references: [id])
+    agentId        Int?
+    Agent          Agent?           @relation(fields: [agentId], references: [id])
     WalletTxn      WalletTxn[]
     WalletSnapshot WalletSnapshot[]
 }
