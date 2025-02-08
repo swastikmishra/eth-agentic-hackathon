@@ -47,11 +47,7 @@ export default function SmartWallets() {
         if (res.status) {
             toast("Smart wallet added successfully");
         } else {
-            toast({
-                variant: "destructive",
-                title: "Uh oh! Something went wrong.",
-                description: "There was a problem with your request.",
-            });
+            toast("Uh oh! Something went wrong.");
         }
 
         await getTraders();
