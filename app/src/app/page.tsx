@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { callAPI } from "@/utils/api";
 import { RefreshCcw, WalletIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-import Wallet from "@/components/app/Wallet";
+import Wallet, { IWallet } from "@/components/app/Wallet";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -39,7 +39,7 @@ export default function Home() {
 
             {!isFetching && (
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    {wallets.map((wallet) => (
+                    {wallets.map((wallet: IWallet) => (
                         <Wallet key={wallet.id} wallet={wallet} />
                     ))}
                 </div>
