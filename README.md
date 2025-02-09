@@ -69,3 +69,13 @@ The platform MirrorBattle provides agentic tools for traders to follow “smart 
 | test-3538@privy.io | +1 555 555 2583 | 798083   |
 
 Test Smart Wallet: 0xE1054F7b83dDa65401ef9f213350486168952F0c
+
+### Screenshots
+
+![Agents](screenshots/agents.png)
+![Custom Trader](screenshots/custom%20trader.png)
+![Traders](screenshots/traders.png)
+![Traders](screenshots/image.png)
+![Wallet Balance](screenshots/wallet%20balance.png)
+![Wallet History](screenshots/wallet%20history.png)
+![Wallets](screenshots/wallets.png)
