@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { FastifyPluginCallback } from "fastify";
 import prisma from "../prisma/prisma";
+import { generateRandomNickname } from "../utils/nickname";
 
 const protectedRoutes: FastifyPluginCallback = (instance, options, done) => {
     instance.get("/", async (request, reply) => {
@@ -62,6 +63,19 @@ const protectedRoutes: FastifyPluginCallback = (instance, options, done) => {
     instance.post("/save", async (request, reply) => {
         try {
             const walletAddress = request.body.walletAddress;
+            let nickname = null;
+            let isNicknameTaken = true;
+
+            while (isNicknameTaken) {
+                // Check if the nickname is already taken
+                nickname = generateRandomNickname();
+                let existingNickname = await prisma.trader.findFirst({
+                    where: {
+                        nickname,
+                    },
+                });
+                if (!existingNickname) isNicknameTaken = false;
+            }
 
             await prisma.trader.create({
                 data: {
@@ -69,6 +83,7 @@ const protectedRoutes: FastifyPluginCallback = (instance, options, done) => {
                     visible: true,
                     disabled: false,
                     walletAddress: walletAddress,
+                    nickname: nickname,
                 },
             });
 

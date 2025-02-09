@@ -27,6 +27,7 @@ export interface ITrader {
     totalBuy: number;
     totalSell: number;
     userId: number;
+    nickname: string;
 }
 
 export default function Trader({ trader }: { trader: ITrader }) {
@@ -56,15 +57,22 @@ export default function Trader({ trader }: { trader: ITrader }) {
     return (
         <Card className="border-none dark:bg-[#1A1C20]">
             <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                    <WalletAddress address={trader.walletAddress} />
+                <CardTitle className="flex items-start justify-between">
+                    <div className="flex flex-col gap-2">
+                        <WalletAddress address={trader.walletAddress} />
+                        <span className="dark:text-blue-300 text-blue-400 text-sm">
+                            {trader.nickname}
+                        </span>
+                    </div>
                     {trader.userId == 0 && (
                         <Badge variant="secondary">System</Badge>
                     )}
                     {trader.userId !== 0 && <Badge>User</Badge>}
                 </CardTitle>
                 <CardDescription>
-                    Realized ROI: {convertRoi(trader.roi)}
+                    <p className="mt-2">
+                        Realized ROI: {convertRoi(trader.roi)}
+                    </p>
                 </CardDescription>
             </CardHeader>
             <CardContent className="text-sm flex flex-col gap-2">

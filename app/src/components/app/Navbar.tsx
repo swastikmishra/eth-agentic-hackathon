@@ -45,8 +45,8 @@ export default function Navbar() {
                 </Link>
             </div>
             <div className="flex items-center gap-4">
-                <h2 className="text-lg font-semibold">{user.welcomeName}</h2>
-                <Avatar username={user.welcomeName as string} />
+                <h2 className="text-lg font-semibold">{user.name}</h2>
+                <Avatar username={user.name as string} />
             </div>
         </nav>
     );

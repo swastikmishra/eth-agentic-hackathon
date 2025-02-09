@@ -6,6 +6,7 @@ model Trader {
     visible       Boolean  @default(true)
     disabled      Boolean  @default(false)
     walletAddress String   @unique
+    nickname      String   @unique
 
     realizeProfit   Decimal @default(0)
     unrealizeProfit Decimal @default(0)

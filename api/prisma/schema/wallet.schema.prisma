@@ -24,6 +24,7 @@ model Wallet {
     Agent          Agent?           @relation(fields: [agentId], references: [id])
     WalletTxn      WalletTxn[]
     WalletSnapshot WalletSnapshot[]
+    WalletBalance  WalletBalance[]
 }
 
 model WalletTxn {
@@ -40,10 +41,40 @@ model WalletTxn {
 }
 
 model WalletSnapshot {
-    id        String   @id @default(uuid())
-    walletId  Int
-    wallet    Wallet   @relation(fields: [walletId], references: [id])
-    usdValue  Int // snapshot value in USD (taken every hour)
-    timestamp DateTime @default(now())
-    date      DateTime
+    id                       Int      @id @default(autoincrement())
+    walletId                 Int
+    wallet                   Wallet   @relation(fields: [walletId], references: [id])
+    native_balance           BigInt
+    native_balance_formatted Decimal
+    native_balance_usd       Decimal
+    token_balance_usd        Decimal
+    networth_usd             Decimal
+    updatedAt                DateTime @default(now()) @updatedAt
+    createdAt                DateTime @default(now())
+}
+
+model WalletBalance {
+    id                        Int      @id @default(autoincrement())
+    walletId                  Int
+    wallet                    Wallet   @relation(fields: [walletId], references: [id])
+    tokenAddress              String
+    symbol                    String?
+    name                      String?
+    logo                      String?
+    thumbnail                 String?
+    decimals                  String?
+    balance                   String?
+    possibleSpam              Boolean? @default(false)
+    verifiedContract          Boolean?
+    balanceFormatted          String?
+    usdPrice                  String?
+    usdPrice24hrPercentChange String?
+    usdPrice24hrUsdChange     String?
+    usdValue                  String?
+    usdValue24hrUsdChange     String?
+    nativeToken               Boolean?
+    createdAt                 DateTime @default(now())
+    updatedAt                 DateTime @default(now()) @updatedAt
+
+    @@unique([walletId, tokenAddress])
 }

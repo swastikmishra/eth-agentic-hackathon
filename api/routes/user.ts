@@ -3,6 +3,7 @@ import fastify from "fastify";
 import prisma from "../prisma/prisma";
 import { privyClient } from "../utils/privyClient";
 import { WalletType } from "@prisma/client";
+import { generateRandomNickname } from "../utils/nickname";
 
 const protectedRoutes: fastify.FastifyPluginCallback = (
     instance,
@@ -11,15 +12,16 @@ const protectedRoutes: fastify.FastifyPluginCallback = (
 ) => {
     instance.post("/authenticate", async (request, reply) => {
         try {
-            const { welcomeName }: { welcomeName: string | null } =
-                request.body;
+            let { name }: { name: string | null } = request.body;
+
+            if (name == "") name = generateRandomNickname();
 
             const user = await prisma.user.update({
                 where: {
                     id: request.user.id,
                 },
                 data: {
-                    welcomeName,
+                    name,
                 },
                 include: {
                     Wallet: true,

@@ -10,17 +10,38 @@ Projec URL: https://ethglobal.com/showcase/mirrorbattle-qqvi8
 
 App URL: https://eth-agentic-hackathon-app.vercel.app/
 
+### Status Symbols
+
+❌Pending
+🔄 In Progress
+✅ Completed
+🚫Blocked
+
 ### Status
 
-✅ Completed
-⌛Pending
-
-| Module         | Status       |
-| -------------- | ------------ |
-| Authentication | ✅ Completed |
-| Server Wallets | ⌛Pending    |
-| Traders        | ⌛Pending    |
-| Agents         | ⌛Pending    |
+| Module            | Features                                  | Status         |
+| ----------------- | ----------------------------------------- | -------------- |
+| User Management   | - Privy Authentication                    | ✅ Completed   |
+| Wallet Management | - Privy Server Wallets Integration        | ✅ Completed   |
+|                   | - Generate user wallet                    | ✅ Completed   |
+|                   | - Wallet transactions & snapshots         | 🔄 In Progress |
+| Dashboard         | - Display user's wallet and agent wallets | ✅ Completed   |
+|                   | - Transaction history                     | ❌Pending      |
+|                   | - Token values in USD and total balance   | ✅ Completed   |
+|                   | - Use Moralis API                         | ✅ Completed   |
+| Trader            | - Top trader scraping                     | ✅ Completed   |
+|                   | - Custom trader                           | ✅ Completed   |
+|                   | - Scheduler (sync every 30 mins)          | 🔄 In Progress |
+|                   | - Add nickname                            | ✅ Completed   |
+| Agent             | - Create agent with initial fund          | ❌Pending      |
+|                   | - Create agent wallet                     | ❌Pending      |
+|                   | - Add nickname                            | ❌Pending      |
+| Agent Execution   | - Listen to active trader transactions    | ❌Pending      |
+|                   | - Follow buy orders                       | ❌Pending      |
+|                   | - Stop loss                               | ❌Pending      |
+|                   | - Kill/Stop agent                         | ❌Pending      |
+| 0x Implementation | - Implement 0x protocol for Gasless Swaps | ❌Pending      |
+| PvP Battle        | - Conduct PvP battle                      | 🚫Blocked      |
 
 ### Test Users
 

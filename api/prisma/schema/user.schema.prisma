@@ -1,11 +1,11 @@
 model User {
-    id          Int      @id @default(autoincrement())
-    cuid        String   @unique @default(cuid())
-    privyId     String   @unique
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    welcomeName String?
-    Wallet      Wallet[]
-    Trader      Trader[]
-    Agent       Agent[]
+    id        Int      @id @default(autoincrement())
+    cuid      String   @unique @default(cuid())
+    privyId   String   @unique
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    name      String?
+    Wallet    Wallet[]
+    Trader    Trader[]
+    Agent     Agent[]
 }

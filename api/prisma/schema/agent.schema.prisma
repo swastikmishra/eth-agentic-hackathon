@@ -5,6 +5,7 @@ model Agent {
     updatedAt                 DateTime @updatedAt
     initialDeposit            Int
     tradeAllocationPercentage Int
+    nickname                  String   @unique
     userId                    Int
     User                      User     @relation(fields: [userId], references: [id])
     traderId                  Int

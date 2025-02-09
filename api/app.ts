@@ -10,6 +10,7 @@ import {
 
 import { protectedRoutes as userProtectedRoutes } from "./routes/user";
 import { protectedRoutes as traderProtectedRoutes } from "./routes/trader";
+import { protectedRoutes as walletProtectedRoutes } from "./routes/wallet";
 
 import prisma from "./prisma/prisma";
 
@@ -29,6 +30,7 @@ app.register((instance, opts, next) => {
     instance.register(healthProtectedRoutes, { prefix: "/api/v1/health" });
     instance.register(userProtectedRoutes, { prefix: "/api/v1/user" });
     instance.register(traderProtectedRoutes, { prefix: "/api/v1/trader" });
+    instance.register(walletProtectedRoutes, { prefix: "/api/v1/wallet" });
     next();
 });
 
@@ -48,7 +50,7 @@ async function start() {
             id: 0,
             cuid: "0000000000000",
             privyId: "0000000000000",
-            welcomeName: "AppOwner",
+            name: "AppOwner",
         },
     });
 }

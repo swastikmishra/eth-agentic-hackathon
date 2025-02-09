@@ -1,4 +1,5 @@
 import prisma from "../prisma/prisma";
+import { generateRandomNickname } from "./nickname";
 
 interface ApiTrader {
     platformId: number;
@@ -69,6 +70,20 @@ async function upsertTrader(apiTrader: ApiTrader): Promise<void> {
         totalSell: apiTrader.totalSell,
     };
 
+    let nickname = null;
+    let isNicknameTaken = true;
+
+    while (isNicknameTaken) {
+        // Check if the nickname is already taken
+        nickname = generateRandomNickname();
+        let existingNickname = await prisma.trader.findFirst({
+            where: {
+                nickname,
+            },
+        });
+        if (!existingNickname) isNicknameTaken = false;
+    }
+
     try {
         await prisma.trader.upsert({
             where: { walletAddress: apiTrader.traderAddress },
@@ -81,6 +96,7 @@ async function upsertTrader(apiTrader: ApiTrader): Promise<void> {
                 disabled,
                 visible: true, // Default value, but specified here for clarity.
                 ...tradingData,
+                nickname: nickname as string,
             },
         });
         console.log(
