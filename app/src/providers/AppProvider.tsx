@@ -6,7 +6,7 @@ import Navbar from "@/components/app/Navbar";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useUser } from "@/stores/user";
-import { usePrivy } from "@privy-io/react-auth";
+import { getAccessToken, usePrivy } from "@privy-io/react-auth";
 import { LogIn } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Toaster } from "@/components/ui/sonner";
@@ -41,6 +41,19 @@ export default function AppProvider({
             }
         }
     }, [PrivyUser, user]);
+
+    useEffect(() => {
+        let timer = null;
+        if (user.authorized) {
+            timer = setInterval(() => {
+                user.refreshAccessToken();
+            }, 5 * 60 * 1000);
+        }
+
+        return () => {
+            if (timer) clearInterval(timer);
+        };
+    }, [user]);
 
     return (
         <>

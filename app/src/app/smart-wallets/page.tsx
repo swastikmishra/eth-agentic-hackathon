@@ -52,8 +52,6 @@ export default function SmartWallets() {
 
         await getTraders();
         await getInfo();
-
-        toast(walletAddress);
     };
 
     useEffect(() => {

@@ -1,14 +1,26 @@
+enum AgentStatus {
+    CREATED
+    WAITING
+    RUNNING
+    KILLED
+    STOPPED
+}
+
 model Agent {
-    id                        Int      @id @default(autoincrement())
-    cuid                      String   @unique @default(cuid())
-    createdAt                 DateTime @default(now())
-    updatedAt                 DateTime @updatedAt
+    id                        Int         @id @default(autoincrement())
+    cuid                      String      @unique @default(cuid())
+    createdAt                 DateTime    @default(now())
+    updatedAt                 DateTime    @updatedAt
     initialDeposit            Int
     tradeAllocationPercentage Int
-    nickname                  String   @unique
+    nickname                  String      @unique
     userId                    Int
-    User                      User     @relation(fields: [userId], references: [id])
+    User                      User        @relation(fields: [userId], references: [id])
     traderId                  Int
-    Trader                    Trader   @relation(fields: [traderId], references: [id])
+    Trader                    Trader      @relation(fields: [traderId], references: [id])
     Wallet                    Wallet[]
+    logs                      String[]
+    status                    AgentStatus @default(CREATED)
+
+    @@unique([userId, traderId])
 }

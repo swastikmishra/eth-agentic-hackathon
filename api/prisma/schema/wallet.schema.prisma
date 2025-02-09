@@ -27,17 +27,28 @@ model Wallet {
     WalletBalance  WalletBalance[]
 }
 
+enum WalletTxnStatus {
+    PENDING
+    SUCCESS
+    FAILED
+}
+
 model WalletTxn {
-    id        String            @id @default(uuid())
-    walletId  Int
-    wallet    Wallet            @relation(fields: [walletId], references: [id])
-    txnOwner  WalletType
-    category  WalletTxnCategory
-    contract  String
-    amount    Int
-    decimals  Int
-    txnHash   String? // optional transaction hash if applicable
-    createdAt DateTime          @default(now())
+    id           String            @id @default(uuid())
+    walletId     Int
+    wallet       Wallet            @relation(fields: [walletId], references: [id])
+    txnOwner     WalletType
+    category     WalletTxnCategory
+    description  String?
+    tokenAddress String
+    amount       Int
+    decimals     Int
+    status       String
+    txnHash      String?
+    createdAt    DateTime          @default(now())
+    toWalletId   Int?
+
+    @@unique([walletId, txnHash])
 }
 
 model WalletSnapshot {

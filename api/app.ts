@@ -11,6 +11,7 @@ import {
 import { protectedRoutes as userProtectedRoutes } from "./routes/user";
 import { protectedRoutes as traderProtectedRoutes } from "./routes/trader";
 import { protectedRoutes as walletProtectedRoutes } from "./routes/wallet";
+import { protectedRoutes as agentProtectedRoutes } from "./routes/agent";
 
 import prisma from "./prisma/prisma";
 
@@ -31,6 +32,7 @@ app.register((instance, opts, next) => {
     instance.register(userProtectedRoutes, { prefix: "/api/v1/user" });
     instance.register(traderProtectedRoutes, { prefix: "/api/v1/trader" });
     instance.register(walletProtectedRoutes, { prefix: "/api/v1/wallet" });
+    instance.register(agentProtectedRoutes, { prefix: "/api/v1/agent" });
     next();
 });
 

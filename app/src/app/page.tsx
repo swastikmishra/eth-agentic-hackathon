@@ -19,6 +19,13 @@ export default function Home() {
         setFetching(false);
     };
 
+    const refreshWallets = async () => {
+        setFetching(true);
+        await callAPI("/wallet/refresh");
+        await getUserWallets();
+        setFetching(false);
+    };
+
     useEffect(() => {
         getUserWallets();
     }, []);
@@ -30,7 +37,7 @@ export default function Home() {
                     <WalletIcon />
                     Your Wallets
                 </h3>
-                <Button disabled={isFetching} onClick={getUserWallets}>
+                <Button disabled={isFetching} onClick={refreshWallets}>
                     <RefreshCcw /> Refresh
                 </Button>
             </div>

@@ -3,6 +3,14 @@ import { EvmChain } from "@moralisweb3/common-evm-utils";
 import prisma from "../prisma/prisma";
 import delay from "./delay";
 
+export const USDC_CONTRACT_ADDRESS = {
+    base: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+};
+
+export const CHAIN_ID = {
+    base: 8453,
+};
+
 Moralis.start({
     apiKey: process.env.MORALIS_API_KEY,
 });
@@ -182,4 +190,11 @@ const updateAllWalletBalances = async () => {
         await updateWalletBalance(wallet.id);
         await delay();
     }
+};
+
+export {
+    updateAllWalletBalances,
+    updateAllWalletSnapshot,
+    updateWalletBalance,
+    updateWalletSnapshot,
 };

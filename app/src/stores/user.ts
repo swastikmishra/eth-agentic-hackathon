@@ -77,6 +77,13 @@ const state = proxy({
             console.error(err);
         }
     },
+
+    refreshAccessToken: async () => {
+        state.privyAccessToken = await getAccessToken();
+        if (!state.privyAccessToken) {
+            state.logout();
+        }
+    },
 });
 
 function useUser() {
