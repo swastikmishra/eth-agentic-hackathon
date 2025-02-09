@@ -4,7 +4,7 @@ Description: MirrorBattle is a platform where crypto traders deploy agents to co
 
 Github: https://github.com/swastikmishra/eth-agentic-hackathon
 
-Idea: The platform MirrorBattle provides agentic tools for traders to follow “smart money wallets” and execute copy-trades based on a set of customizable criteria. Each trader configures his own agent, deposits a certain amount of USDC into the agentic wallet, and engages with a PvP competition of trading. On a 7-day rolling basis, a PvP battle is conducted and snapshots of beginning and ending balance of the agent wallets are token. The trader with an agent earning higher return % wins the battle.
+Idea: The platform MirrorBattle provides agentic tools for traders to follow “smart money wallets” and execute copy-trades based on a set of customizable criteria. Each trader configures his own agent, deposits a certain amount of USDC into the agentic wallet, and engages with a PvP competition of trading. On a 7-day rolling basis, a PvP battle is conducted and snapshots of beginning and ending balance of the agent wallets are taken. The trader with an agent earning higher return % wins the battle.
 
 Projec URL: https://ethglobal.com/showcase/mirrorbattle-qqvi8
 
