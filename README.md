@@ -73,9 +73,9 @@ Test Smart Wallet: 0xE1054F7b83dDa65401ef9f213350486168952F0c
 ### Screenshots
 
 ![Agents](screenshots/agents.png)
-![Custom Trader](screenshots/custom%20trader.png)
+![Custom Trader](screenshots/customtrader.png)
 ![Traders](screenshots/traders.png)
 ![Traders](screenshots/image.png)
-![Wallet Balance](screenshots/wallet%20balance.png)
-![Wallet History](screenshots/wallet%20history.png)
+![Wallet Balance](screenshots/walletbalance.png)
+![Wallet History](screenshots/wallethistory.png)
 ![Wallets](screenshots/wallets.png)
