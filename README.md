@@ -1,4 +1,3 @@
-
 ## MirrorBattle
 
 MirrorBattle is a platform where crypto traders deploy agents to copy-trade 'smart money wallets' and compete in PvP battles.
@@ -15,20 +14,19 @@ The platform MirrorBattle provides agentic tools for traders to follow “smart 
 
 ### Key Features
 
-* Frictionless onboarding with creation of server wallets with restricted policies.
-* Leveraging both pre-screened smart money wallets and custom wallet addresses for copy trades.
-* Agentic wallets for automated copy-trades. 
-* Gasless transactions on EVM via 0x API
-* Customizable parameters for the deployment of copy-trade agents:
-	* Thresholds (in USD value) to trigger copy-trade
+-   Frictionless onboarding with creation of server wallets with restricted policies.
+-   Leveraging both pre-screened smart money wallets and custom wallet addresses for copy trades.
+-   Agentic wallets for automated copy-trades.
+-   Gasless transactions on EVM via 0x API
+-   Customizable parameters for the deployment of copy-trade agents:
+    -   Thresholds (in USD value) to trigger copy-trade
 
 ### Roadmap & Future Plans
 
-* Improvement of UI&UX design
-* Add profit-taking & stop-loss rules to the agents 
-* Add multi-chain support, including Solana
-* Add prize pools and prediction markets for each PvP battle
-
+-   Improvement of UI&UX design
+-   Add profit-taking & stop-loss rules to the agents
+-   Add multi-chain support, including Solana
+-   Add prize pools and prediction markets for each PvP battle
 
 ### Status Symbols
 
@@ -44,23 +42,23 @@ The platform MirrorBattle provides agentic tools for traders to follow “smart 
 | User Management   | - Privy Authentication                    | ✅ Completed   |
 | Wallet Management | - Privy Server Wallets Integration        | ✅ Completed   |
 |                   | - Generate user wallet                    | ✅ Completed   |
-|                   | - Wallet transactions & snapshots         | 🔄 In Progress |
+|                   | - Wallet transactions & snapshots         | ✅ Completed   |
 | Dashboard         | - Display user's wallet and agent wallets | ✅ Completed   |
-|                   | - Transaction history                     | ❌Pending      |
+|                   | - Transaction history                     | ✅ Completed   |
 |                   | - Token values in USD and total balance   | ✅ Completed   |
 |                   | - Use Moralis API                         | ✅ Completed   |
 | Trader            | - Top trader scraping                     | ✅ Completed   |
 |                   | - Custom trader                           | ✅ Completed   |
-|                   | - Scheduler (sync every 30 mins)          | 🔄 In Progress |
+|                   | - Scheduler (sync every 30 mins)          | ✅ Completed   |
 |                   | - Add nickname                            | ✅ Completed   |
-| Agent             | - Create agent with initial fund          | ❌Pending      |
-|                   | - Create agent wallet                     | ❌Pending      |
-|                   | - Add nickname                            | ❌Pending      |
-| Agent Execution   | - Listen to active trader transactions    | ❌Pending      |
-|                   | - Follow buy orders                       | ❌Pending      |
-|                   | - Stop loss                               | ❌Pending      |
-|                   | - Kill/Stop agent                         | ❌Pending      |
-| 0x Implementation | - Implement 0x protocol for Gasless Swaps | ❌Pending      |
+| Agent             | - Create agent with initial fund          | ✅ Completed   |
+|                   | - Create agent wallet                     | ✅ Completed   |
+|                   | - Add nickname                            | ✅ Completed   |
+| Agent Execution   | - Listen to active trader transactions    | 🔄 In Progress |
+|                   | - Follow buy orders                       | 🔄 In Progress |
+|                   | - Stop loss                               | 🚫Blocked      |
+|                   | - Kill/Stop agent                         | 🚫Blocked      |
+| 0x Implementation | - Implement 0x protocol for Gasless Swaps | ✅ Completed   |
 | PvP Battle        | - Conduct PvP battle                      | 🚫Blocked      |
 
 ### Test Users
@@ -71,5 +69,3 @@ The platform MirrorBattle provides agentic tools for traders to follow “smart 
 | test-3538@privy.io | +1 555 555 2583 | 798083   |
 
 Test Smart Wallet: 0xE1054F7b83dDa65401ef9f213350486168952F0c
-
-
