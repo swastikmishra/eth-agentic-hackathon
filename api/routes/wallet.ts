@@ -26,6 +26,8 @@ const protectedRoutes: FastifyPluginCallback = (instance, options, done) => {
                             },
                         },
                     },
+                    Agent: true,
+                    User: true,
                 },
             });
 

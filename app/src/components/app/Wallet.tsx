@@ -53,6 +53,8 @@ export interface IWallet {
     agentId: number | null;
     WalletBalance: IWalletBalance[];
     WalletSnapshot: IWalletSnapshot[];
+    Agent?: IAgent; // Optional: Present if the wallet is associated with an Agent.
+    User?: IUser; // Optional: Present if the wallet is associated with a User.
 }
 
 export interface IWalletBalance {
@@ -89,6 +91,30 @@ export interface IWalletSnapshot {
     updatedAt: string;
     createdAt: string;
 }
+
+export interface IAgent {
+    id: number;
+    cuid: string;
+    createdAt: string;
+    updatedAt: string;
+    initialDeposit: number;
+    tradeAllocationPercentage: number;
+    nickname: string;
+    userId: number;
+    traderId: number;
+    logs: string[];
+    status: string;
+}
+
+export interface IUser {
+    id: number;
+    cuid: string;
+    privyId: string;
+    createdAt: string;
+    updatedAt: string;
+    name: string;
+}
+
 const convertNumbers = (
     num: string | null,
     prefix: string = "$",
@@ -112,6 +138,9 @@ export default function Wallet({ wallet }: { wallet: IWallet }) {
                 <CardTitle className="flex items-start justify-between">
                     <div className="flex flex-col gap-2">
                         <WalletAddress address={wallet.address} />
+                        <span className="dark:text-blue-300 text-blue-400 text-sm">
+                            {wallet.Agent ? wallet.Agent.nickname : <>&nbsp;</>}
+                        </span>
                     </div>
                     {wallet.type == "AGENT" && (
                         <Badge variant="secondary">Agent</Badge>
