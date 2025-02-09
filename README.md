@@ -27,7 +27,7 @@ The platform MirrorBattle provides agentic tools for traders to follow “smart 
 * Improvement of UI&UX design
 * Add profit-taking & stop-loss rules to the agents 
 * Add multi-chain support, including Solana
-* Add prize pool and prediction market for each PvP battle
+* Add prize pools and prediction markets for each PvP battle
 
 
 ### Status Symbols
