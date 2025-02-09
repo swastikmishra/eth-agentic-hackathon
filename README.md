@@ -15,7 +15,7 @@ The platform MirrorBattle provides agentic tools for traders to follow “smart 
 
 ### Key Features
 
-* Frictionless onboarding and creation of embedded wallets. 
+* Frictionless onboarding with creation of server wallets with restricted policies.
 * Leveraging both pre-screened smart money wallets and custom wallet addresses for copy trades.
 * Agentic wallets for automated copy-trades. 
 * Gasless transactions on EVM via 0x API
